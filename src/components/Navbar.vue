@@ -2,8 +2,8 @@
   <nav class="deep-purple darken-3">
     <div class="nav-wrapper container">
       <ul>
-        <li><a href="/">Books</a></li>
-        <li><a href="/">Add New Book</a></li>
+        <li><a href="/">Книги</a></li>
+        <li><a href="/">Добавить новую</a></li>
       </ul>
     </div>
   </nav>

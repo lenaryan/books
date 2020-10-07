@@ -1,6 +1,6 @@
 <template>
     <section class="all-books container">
-        <h1>All Books</h1>
+        <h1>Все книги</h1>
         <div class="row">
             <Book v-for="(book, index) in books" :key="index" :book="book" />
         </div>
@@ -9,6 +9,7 @@
 
 <script>
 import Book from '@/components/Book'
+import db from '@/firebase/init'
 
 export default {
     name: 'Books',
@@ -17,13 +18,24 @@ export default {
     },
     data() {
         return {
-            books: [
-                {title: 'Book 1', description: 'descr 1', author: 'author 1', year: 'year 1'},
-                {title: 'Book 2', description: 'descr 2', author: 'author 2', year: 'year 2'},
-                {title: 'Book 1', description: 'descr 1', author: 'author 1', year: 'year 1'},
-                {title: 'Book 2', description: 'descr 2', author: 'author 2', year: 'year 2'},
-            ]
+            books: []
         }
+    },
+    created() {
+        db.collection('books').get()
+            .then(snapshot => {
+                snapshot.forEach(doc => {
+                    let book = doc.data();
+                    book.id = book.id;
+                    this.books.push(book)
+                })
+            })
     }
 }
 </script>
+
+<style>
+h1 {
+    font-size: 50px;
+}
+</style>
