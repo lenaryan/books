@@ -25,4 +25,9 @@ export default {
 h1 {
     font-size: 50px;
 }
+@media (max-width: 640px) {
+  h1 {
+    font-size: 40px;
+  }
+}
 </style>
