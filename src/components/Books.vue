@@ -2,7 +2,7 @@
     <section class="all-books container">
         <h1>Все книги</h1>
         <div class="row">
-            <Book v-for="book in books" :key="book.id" :book="book" />
+            <Book v-for="book in books" :key="book.id" :book="book" @delete="deleteBook" />
         </div>
     </section>
 </template>
@@ -30,6 +30,14 @@ export default {
                     this.books.push(book)
                 })
             })
+    },
+    methods: {
+        deleteBook(data) {
+            db.collection('books').doc(data.id).delete()
+                .then(() => {
+                    this.books  = this.books.filter(book => book.id != data.id)
+                })
+        }
     }
 }
 </script>
