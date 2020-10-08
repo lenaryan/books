@@ -9,6 +9,9 @@
                 <p class="book__author">Автор: {{ book.author }}</p>
                 <p class="book__year">{{ book.year }}</p>
             </div>
+            <span class="btn-floating halfway-fab btn-large white">
+                <router-link :to="{ name: 'EditBook', params: {id: book.id} }"><i class="material-icons deep-purple-text">edit</i></router-link>
+            </span>
         </div>
     </article>
 </template>

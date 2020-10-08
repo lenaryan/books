@@ -2,7 +2,7 @@
     <section class="all-books container">
         <h1>Все книги</h1>
         <div class="row">
-            <Book v-for="(book, index) in books" :key="index" :book="book" />
+            <Book v-for="book in books" :key="book.id" :book="book" />
         </div>
     </section>
 </template>
@@ -26,7 +26,7 @@ export default {
             .then(snapshot => {
                 snapshot.forEach(doc => {
                     let book = doc.data();
-                    // book.id = book.id;
+                    book.id = doc.id;
                     this.books.push(book)
                 })
             })
