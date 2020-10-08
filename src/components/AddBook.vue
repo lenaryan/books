@@ -18,6 +18,7 @@
                 <label for="add__year">Год выпуска</label>
                 <input id="add__year" type="text" v-model="year">
             </div>
+            <p v-if="feedback" class="feedback center">Заполни хотя бы название, камон</p>
             <button class="btn-large deep-purple darken-3 add__btn">Добавить</button>
         </form>
     </section>
@@ -33,19 +34,25 @@ export default {
             title: null,
             description: null,
             author: null,
-            year: null
+            year: null,
+            feedback: false
         }
     },
     methods: {
         addBook() {
-            db.collection('books').add({
-                title: this.title,
-                description: this.description,
-                author: this.author,
-                year: this.year
-            }).then(() => {
-                this.$router.push({ name: 'Books' })
-            }).catch(err => console.log(err))
+            if (this.title) {
+                db.collection('books').add({
+                    title: this.title,
+                    description: this.description,
+                    author: this.author,
+                    year: this.year
+                }).then(() => {
+                    this.$router.push({ name: 'Books' })
+                }).catch(err => console.log(err))
+                this.feedback = false
+            } else {
+                this.feedback = true;
+            }
         }
     }
 }

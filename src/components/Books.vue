@@ -26,7 +26,7 @@ export default {
             .then(snapshot => {
                 snapshot.forEach(doc => {
                     let book = doc.data();
-                    book.id = book.id;
+                    // book.id = book.id;
                     this.books.push(book)
                 })
             })
