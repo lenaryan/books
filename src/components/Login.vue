@@ -1,16 +1,16 @@
 <template>
     <section class="container">
         <h1 class="center">Вход</h1>
-        <form class="login" @submit.prevent="addBook">
+        <form class="login" @submit.prevent="logIn">
             <div class="login__field">
-                <label for="login__name">Логин</label>
-                <input id="login__name" type="text" v-model="login">
+                <label for="login__email">E-mail</label>
+                <input id="login__email" type="email" v-model="email">
             </div>
             <div class="login__field">
                 <label for="login__pass">Пароль</label>
-                <input id="login__pass" type="text" v-model="password">
+                <input id="login__pass" type="password" v-model="password">
             </div>
-            <p v-if="feedback" class="feedback center">Заполни хотя бы название, камон</p>
+            <p v-if="feedback" class="feedback center">Заполни форму нормально</p>
             <button class="btn-large deep-purple darken-3 login__btn">Добавить</button>
         </form>
     </section>
@@ -18,18 +18,25 @@
 
 <script>
 import db from '@/firebase/init'
+import firebase from 'firebase'
 
 export default {
     name: 'Login',
     data() {
         return {
-            login: null,
+            email: null,
             password: null,
             feedback: false
         }
     },
     methods: {
-
+        logIn() {
+            if (this.email && this.password) {
+                this.feedback = false
+            } else {
+                this.feedback = true
+            }
+        }
     }
 }
 </script>
@@ -41,7 +48,8 @@ export default {
 .login input {
     font-size: 18px;
 }
-.login input[type=text]:focus:not([readonly]) {
+.login input[type=email]:focus:not([readonly]),
+.login input[type=password]:focus:not([readonly]) {
     border-bottom: 1px solid #4527a0;
     box-shadow: 0 1px 0 0 #4527a0;
 }
