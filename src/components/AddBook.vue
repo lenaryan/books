@@ -1,6 +1,6 @@
 <template>
     <section class="add container">
-        <h1 class="center">Add A Book</h1>
+        <h1 class="center">Добавить книгу</h1>
         <form class="add" @submit.prevent="addBook">
             <div class="add__field">
                 <label for="add__title">Название</label>

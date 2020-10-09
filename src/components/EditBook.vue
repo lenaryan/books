@@ -1,6 +1,6 @@
 <template>
     <section class="edit container">
-        <h1 class="center">Edit A Book</h1>
+        <h1 class="center">Редактировать книгу</h1>
         <form class="edit" @submit.prevent="editBook">
             <div class="edit__field">
                 <label for="edit__title">Название</label>
