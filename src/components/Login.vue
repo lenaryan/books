@@ -1,17 +1,17 @@
 <template>
-    <section class="add container">
+    <section class="container">
         <h1 class="center">Вход</h1>
-        <form class="add" @submit.prevent="addBook">
-            <div class="add__field">
-                <label for="add__title">Логин</label>
-                <input id="add__title" type="text" v-model="login">
+        <form class="login" @submit.prevent="addBook">
+            <div class="login__field">
+                <label for="login__name">Логин</label>
+                <input id="login__name" type="text" v-model="login">
             </div>
-            <div class="add__field">
-                <label for="add__year">Пароль</label>
-                <input id="add__year" type="text" v-model="password">
+            <div class="login__field">
+                <label for="login__pass">Пароль</label>
+                <input id="login__pass" type="text" v-model="password">
             </div>
             <p v-if="feedback" class="feedback center">Заполни хотя бы название, камон</p>
-            <button class="btn-large deep-purple darken-3 add__btn">Добавить</button>
+            <button class="btn-large deep-purple darken-3 login__btn">Добавить</button>
         </form>
     </section>
 </template>
@@ -20,7 +20,7 @@
 import db from '@/firebase/init'
 
 export default {
-    name: 'AddBook',
+    name: 'Login',
     data() {
         return {
             login: null,
@@ -35,17 +35,17 @@ export default {
 </script>
 
 <style>
-.add {
+.login {
     margin-top: 40px;
 }
-.add input {
+.login input {
     font-size: 18px;
 }
-.add input[type=text]:focus:not([readonly]), .add textarea:focus:not([readonly]) {
+.login input[type=text]:focus:not([readonly]) {
     border-bottom: 1px solid #4527a0;
     box-shadow: 0 1px 0 0 #4527a0;
 }
-.add__btn {
+.login__btn {
     display: block;
     margin: 40px auto 0;
 }

@@ -1,5 +1,5 @@
 <template>
-    <section class="edit container">
+    <section class="container">
         <h1 class="center">Редактировать книгу</h1>
         <form class="edit" @submit.prevent="editBook">
             <div class="edit__field">
