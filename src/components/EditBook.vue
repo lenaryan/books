@@ -18,6 +18,10 @@
                 <label for="edit__year">Год выпуска</label>
                 <input id="edit__year" type="text" v-model="book.year">
             </div>
+            <div class="add__field">
+                <label for="add__year">Прочитано в</label>
+                <input id="add__year" type="text" v-model="book.readYear">
+            </div>
             <p v-if="feedback" class="feedback center">Заполни хотя бы название, камон</p>
             <button class="btn-large deep-purple darken-3 edit__btn">Изменить</button>
         </form>
@@ -49,7 +53,8 @@ export default {
                     title: this.book.title,
                     description: this.book.description,
                     author: this.book.author,
-                    year: this.book.year
+                    year: this.book.year,
+                    readYear: this.book.readYear
                 }).then(() => {
                     this.$router.push({ name: 'Books' })
                 }).catch(err => console.log(err))

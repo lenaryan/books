@@ -9,6 +9,7 @@
             <div class="card-action">
                 <p class="book__author">Автор: {{ book.author }}</p>
                 <p class="book__year">{{ book.year }}</p>
+                <p class="book__read-year deep-purple-text">Прочитано в {{ book.readYear }}</p>
             </div>
             <span class="btn-floating halfway-fab btn white">
                 <router-link :to="{ name: 'EditBook', params: {id: book.id} }"><i class="material-icons deep-purple-text">edit</i></router-link>
@@ -69,5 +70,9 @@ export default {
     .book__delete:focus {
         background-color: transparent;
         opacity: 0.7;
+    }
+    .book__read-year {
+        margin: 5px 0 0;
+        font-size: 13px;
     }
 </style>

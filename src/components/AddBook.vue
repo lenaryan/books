@@ -18,6 +18,10 @@
                 <label for="add__year">Год выпуска</label>
                 <input id="add__year" type="text" v-model="year">
             </div>
+            <div class="add__field">
+                <label for="add__year">Прочитано в</label>
+                <input id="add__year" type="text" v-model="readYear">
+            </div>
             <p v-if="feedback" class="feedback center">Заполни хотя бы название, камон</p>
             <button class="btn-large deep-purple darken-3 add__btn">Добавить</button>
         </form>
@@ -35,6 +39,7 @@ export default {
             description: null,
             author: null,
             year: null,
+            readYear: null,
             feedback: false
         }
     },
@@ -45,7 +50,8 @@ export default {
                     title: this.title,
                     description: this.description,
                     author: this.author,
-                    year: this.year
+                    year: this.year,
+                    readYear: this.readYear
                 }).then(() => {
                     this.$router.push({ name: 'Books' })
                 }).catch(err => console.log(err))
