@@ -11,13 +11,12 @@
                 <input id="login__pass" type="password" v-model="password">
             </div>
             <p v-if="feedback" class="feedback center">Заполни форму нормально</p>
-            <button class="btn-large deep-purple darken-3 login__btn">Добавить</button>
+            <button class="btn-large deep-purple darken-3 login__btn">Войти</button>
         </form>
     </section>
 </template>
 
 <script>
-import db from '@/firebase/init'
 import firebase from 'firebase'
 
 export default {
@@ -32,6 +31,10 @@ export default {
     methods: {
         logIn() {
             if (this.email && this.password) {
+                firebase.auth().signInWithEmailAndPassword(this.email, this.password)
+                    .then(cred => {
+                        this.$router.push({ name: 'Books' })
+                    }).catch(err => this.feedback = true)
                 this.feedback = false
             } else {
                 this.feedback = true
