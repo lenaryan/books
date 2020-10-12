@@ -1,5 +1,5 @@
 <template>
-    <article class="book col m6 s12">
+    <article class="book col xl4 m6 s12">
         <div class="card deep-purple lighten-4">
             <button class="material-icons deep-purple-text right book__delete" @click.prevent="deleteBook(book.id)">delete</button>
             <div class="card-content">
