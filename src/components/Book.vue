@@ -43,6 +43,9 @@ export default {
     .book {
         margin-bottom: 10px;
     }
+    .book.col.xl4 {
+        margin-left: 0;
+    }
     .book .book__title {
         margin-top: 0;
         font-weight: 500;

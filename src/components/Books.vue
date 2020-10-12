@@ -76,5 +76,7 @@ export default {
     .books-row {
         margin-right: -0.75rem;
         margin-left: -0.75rem;
+        display: flex;
+        flex-wrap: wrap;
     }
 </style>
