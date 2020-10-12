@@ -49,6 +49,10 @@ export default {
                 })
         },
         filterBooks(e) {
+            //changing classes in switcher
+            document.querySelectorAll('.darken-1').forEach(item => item.className = item.className.replace('darken', 'lighten'))
+            e.target.className = e.target.className.replace('lighten', 'darken');
+
             if (Number.parseInt(e.target.innerText)) {
                 this.filteredBooks = this.books.filter(book => book.readYear == e.target.innerText)
             }
