@@ -2,11 +2,11 @@
     <section class="all-books container">
         <h1>Все книги</h1>
         <div class="row switch">
-            <button class="deep-purple lighten-1 btn switch__btn">Все</button>
-            <button v-for="(rYear, index) in readYears" :key="index" class="deep-purple lighten-1 btn switch__btn">{{ rYear }}</button>
+            <button class="deep-purple lighten-1 btn switch__btn" @click="filterBooks">Все</button>
+            <button v-for="(rYear, index) in readYears" :key="index" class="deep-purple lighten-1 btn switch__btn" @click="filterBooks">{{ rYear }}</button>
         </div>
         <div class="row books-row">
-            <Book v-for="book in books" :key="book.id" :book="book" @delete="deleteBook" />
+            <Book v-for="book in filteredBooks" :key="book.id" :book="book" @delete="deleteBook" />
         </div>
     </section>
 </template>
@@ -23,6 +23,7 @@ export default {
     data() {
         return {
             books: [],
+            filteredBooks: [],
             readYears: null
         }
     },
@@ -38,7 +39,7 @@ export default {
                     this.readYears.add(book.readYear);
                 })
             })
-        console.log('years', this.readYears)
+        this.filteredBooks = this.books
     },
     methods: {
         deleteBook(data) {
@@ -46,6 +47,14 @@ export default {
                 .then(() => {
                     this.books  = this.books.filter(book => book.id != data.id)
                 })
+        },
+        filterBooks(e) {
+            if (Number.parseInt(e.target.innerText)) {
+                this.filteredBooks = this.books.filter(book => book.readYear == e.target.innerText)
+            }
+            else {
+                this.filteredBooks = this.books
+            }
         }
     }
 }
