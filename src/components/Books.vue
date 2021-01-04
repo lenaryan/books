@@ -3,7 +3,7 @@
         <h1>Все книги</h1>
         <div class="row switch">
             <button class="deep-purple lighten-1 btn switch__btn" @click="filterBooks">Все</button>
-            <button v-for="(rYear, index) in readYears" :key="index" class="deep-purple lighten-1 btn switch__btn" @click="filterBooks">{{ rYear }}</button>
+            <button v-for="(rYear, index) in readYearsArr" :key="index" class="deep-purple lighten-1 btn switch__btn" @click="filterBooks">{{ rYear }}</button>
         </div>
         <div class="row books-row">
             <Book v-for="book in filteredBooks" :key="book.id" :book="book" @delete="deleteBook" />
@@ -24,7 +24,8 @@ export default {
         return {
             books: [],
             filteredBooks: [],
-            readYears: null
+            readYears: null,
+            readYearsArr: []
         }
     },
     created() {
@@ -38,7 +39,10 @@ export default {
                     this.books.push(book);
                     this.readYears.add(book.readYear);
                 })
-            })
+            }).then(() => {
+                    this.readYearsArr = Array.from([...this.readYears]).sort((a,b) => (b - a));
+                }
+            )
         this.filteredBooks = this.books
     },
     methods: {
