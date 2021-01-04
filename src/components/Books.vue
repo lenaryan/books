@@ -24,12 +24,11 @@ export default {
         return {
             books: [],
             filteredBooks: [],
-            readYears: null,
             readYearsArr: []
         }
     },
     created() {
-        this.readYears = new Set();
+        let readYears = new Set();
 
         db.collection('books').get()
             .then(snapshot => {
@@ -37,10 +36,10 @@ export default {
                     let book = doc.data();
                     book.id = doc.id;
                     this.books.push(book);
-                    this.readYears.add(book.readYear);
+                    readYears.add(book.readYear);
                 })
             }).then(() => {
-                    this.readYearsArr = Array.from([...this.readYears]).sort((a,b) => (b - a));
+                    this.readYearsArr = Array.from(readYears).sort((a,b) => (b - a));
                 }
             )
         this.filteredBooks = this.books
