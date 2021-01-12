@@ -1,21 +1,28 @@
 <template>
-    <article class="book col xl4 m6 s12">
-        <div class="card deep-purple lighten-4">
-            <button class="material-icons deep-purple-text right book__delete" @click.prevent="deleteBook(book.id)">delete</button>
-            <div class="card-content">
-                <h3 class="card-title book__title">{{ book.title }}</h3>
-                <p class="book__description">{{ book.description }}</p>
+    <transition
+        appear
+        appear-class="book-hidden"
+        appear-to-class="book-shown"
+        appear-active-class="book-shown-active"
+    >
+        <article class="book col xl4 m6 s12">
+            <div class="card deep-purple lighten-4">
+                <button class="material-icons deep-purple-text right book__delete" @click.prevent="deleteBook(book.id)">delete</button>
+                <div class="card-content">
+                    <h3 class="card-title book__title">{{ book.title }}</h3>
+                    <p class="book__description">{{ book.description }}</p>
+                </div>
+                <div class="card-action">
+                    <p class="book__author">Автор: {{ book.author }}</p>
+                    <p class="book__year">{{ book.year }}</p>
+                    <p class="book__read-year deep-purple-text">Прочитано в {{ book.readYear }}</p>
+                </div>
+                <span class="btn-floating halfway-fab btn white">
+                    <router-link :to="{ name: 'EditBook', params: {id: book.id} }"><i class="material-icons deep-purple-text">edit</i></router-link>
+                </span>            
             </div>
-            <div class="card-action">
-                <p class="book__author">Автор: {{ book.author }}</p>
-                <p class="book__year">{{ book.year }}</p>
-                <p class="book__read-year deep-purple-text">Прочитано в {{ book.readYear }}</p>
-            </div>
-            <span class="btn-floating halfway-fab btn white">
-                <router-link :to="{ name: 'EditBook', params: {id: book.id} }"><i class="material-icons deep-purple-text">edit</i></router-link>
-            </span>            
-        </div>
-    </article>
+        </article>
+    </transition>
 </template>
 
 <script>
@@ -40,6 +47,15 @@ export default {
 </script>
 
 <style>
+    .book-hidden {
+        opacity: 0;
+    }
+    .book-shown {
+        opacity: 1;
+    }
+    .book-shown-active {
+        transition: all 0.7s ease;
+    }
     .book {
         margin-bottom: 10px;
     }

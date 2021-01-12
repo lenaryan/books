@@ -1,18 +1,32 @@
 <template>
     <section class="container">
-        <h1 class="center">Вход</h1>
-        <form class="login" @submit.prevent="logIn">
-            <div class="login__field">
-                <label for="login__email">E-mail</label>
-                <input id="login__email" type="email" v-model="email">
-            </div>
-            <div class="login__field">
-                <label for="login__pass">Пароль</label>
-                <input id="login__pass" type="password" v-model="password">
-            </div>
-            <p v-if="feedback" class="feedback center">Заполни форму нормально</p>
-            <button class="btn-large deep-purple darken-3 login__btn">Войти</button>
-        </form>
+        <transition
+            appear
+            appear-class="title-hidden"
+            appear-to-class="title-shown"
+            appear-active-class="title-shown-active"
+        >
+            <h1 class="center">Вход</h1>
+        </transition>
+        <transition
+            appear
+            appear-class="form-hidden"
+            appear-to-class="form-shown"
+            appear-active-class="form-shown-active"
+        >
+            <form class="login" @submit.prevent="logIn">
+                <div class="login__field">
+                    <label for="login__email">E-mail</label>
+                    <input id="login__email" type="email" v-model="email">
+                </div>
+                <div class="login__field">
+                    <label for="login__pass">Пароль</label>
+                    <input id="login__pass" type="password" v-model="password">
+                </div>
+                <p v-if="feedback" class="feedback center">Заполни форму нормально</p>
+                <button class="btn-large deep-purple darken-3 login__btn">Войти</button>
+            </form>
+        </transition>
     </section>
 </template>
 
@@ -59,5 +73,19 @@ export default {
 .login__btn {
     display: block;
     margin: 40px auto 0;
+}
+.form-hidden,
+.title-hidden {
+    opacity: 0;
+}
+.form-shown,
+.title-shown {
+    opacity: 1;
+}
+.title-shown-active {
+    transition: all 0.3s ease;
+}
+.form-shown-active {
+    transition: all 0.7s ease;
 }
 </style>

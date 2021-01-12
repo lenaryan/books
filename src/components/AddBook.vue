@@ -1,30 +1,44 @@
 <template>
     <section class="container">
-        <h1 class="center">Добавить книгу</h1>
-        <form class="add" @submit.prevent="addBook">
-            <div class="add__field">
-                <label for="add__title">Название</label>
-                <input id="add__title" type="text" v-model="title">
-            </div>
-            <div class="add__field">
-                <label for="add__descr">Описание</label>
-                <textarea id="add__descr" class="materialize-textarea" v-model="description" />
-            </div>
-            <div class="add__field">
-                <label for="add__author">Автор</label>
-                <input id="add__author" type="text" v-model="author">
-            </div>
-            <div class="add__field">
-                <label for="add__year">Год выпуска</label>
-                <input id="add__year" type="text" v-model="year">
-            </div>
-            <div class="add__field">
-                <label for="add__year">Прочитано в</label>
-                <input id="add__year" type="text" v-model="readYear">
-            </div>
-            <p v-if="feedback" class="feedback center">Заполни хотя бы название, камон</p>
-            <button class="btn-large deep-purple darken-3 add__btn">Добавить</button>
-        </form>
+        <transition
+            appear
+            appear-class="title-hidden"
+            appear-to-class="title-shown"
+            appear-active-class="title-shown-active"
+        >
+            <h1 class="center">Добавить книгу</h1>
+        </transition>
+        <transition
+            appear
+            appear-class="form-hidden"
+            appear-to-class="form-shown"
+            appear-active-class="form-shown-active"
+        >
+            <form class="add" @submit.prevent="addBook">
+                <div class="add__field">
+                    <label for="add__title">Название</label>
+                    <input id="add__title" type="text" v-model="title">
+                </div>
+                <div class="add__field">
+                    <label for="add__descr">Описание</label>
+                    <textarea id="add__descr" class="materialize-textarea" v-model="description" />
+                </div>
+                <div class="add__field">
+                    <label for="add__author">Автор</label>
+                    <input id="add__author" type="text" v-model="author">
+                </div>
+                <div class="add__field">
+                    <label for="add__year">Год выпуска</label>
+                    <input id="add__year" type="text" v-model="year">
+                </div>
+                <div class="add__field">
+                    <label for="add__year">Прочитано в</label>
+                    <input id="add__year" type="text" v-model="readYear">
+                </div>
+                <p v-if="feedback" class="feedback center">Заполни хотя бы название, камон</p>
+                <button class="btn-large deep-purple darken-3 add__btn">Добавить</button>
+            </form>
+        </transition>
     </section>
 </template>
 
@@ -78,5 +92,19 @@ export default {
 .add__btn {
     display: block;
     margin: 40px auto 0;
+}
+.form-hidden,
+.title-hidden {
+    opacity: 0;
+}
+.form-shown,
+.title-shown {
+    opacity: 1;
+}
+.title-shown-active {
+    transition: all 0.3s ease;
+}
+.form-shown-active {
+    transition: all 0.7s ease;
 }
 </style>

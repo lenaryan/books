@@ -1,10 +1,24 @@
 <template>
     <section class="all-books container">
-        <h1>Все книги</h1>
-        <div class="row switch">
-            <button class="deep-purple lighten-1 btn switch__btn" @click="filterBooks">Все</button>
-            <button v-for="(rYear, index) in readYearsArr" :key="index" class="deep-purple lighten-1 btn switch__btn" @click="filterBooks">{{ rYear }}</button>
-        </div>
+        <transition
+            appear
+            appear-class="title-hidden"
+            appear-to-class="title-shown"
+            appear-active-class="title-shown-active"
+        >
+            <h1>Все книги</h1>
+        </transition>
+        <transition
+            appear
+            appear-class="yr-hidden"
+            appear-to-class="yr-shown"
+            appear-active-class="yr-shown-active"
+        >
+            <div class="row switch">
+                <button class="deep-purple lighten-1 btn switch__btn" @click="filterBooks">Все</button>
+                <button v-for="(rYear, index) in readYearsArr" :key="index" class="deep-purple lighten-1 btn switch__btn" @click="filterBooks">{{ rYear }}</button>
+            </div>
+        </transition>
         <div class="row books-row">
             <Book v-for="book in filteredBooks" :key="book.id" :book="book" @delete="deleteBook" />
         </div>
@@ -81,5 +95,17 @@ export default {
         margin-left: -0.75rem;
         display: flex;
         flex-wrap: wrap;
+    }
+    .yr-hidden,
+    .title-hidden {
+        opacity: 0;
+    }
+    .yr-shown,
+    .title-shown {
+        opacity: 1;
+    }
+    .yr-shown-active,
+    .title-shown-active {
+        transition: all 0.3s ease;
     }
 </style>
