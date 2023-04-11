@@ -85,10 +85,14 @@ export default {
     .switch {
         display: flex;
         align-items: center;
-        margin: 40px 0 30px;
+        margin: 40px 0 20px;
+        flex-wrap: wrap;
     }
     .switch__btn {
         margin-right: 10px;
+        margin-bottom: 10px;
+        width: 70px;
+        flex-shrink: 0;
     }
     .books-row {
         margin-right: -0.75rem;

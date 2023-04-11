@@ -13,29 +13,22 @@
                     <p class="book__description">{{ book.description }}</p>
                 </div>
                 <div class="card-action">
-                    <p class="book__author">Автор: {{ book.author }}</p>
-                    <p class="book__year">{{ book.year }}</p>
+                    <p v-if="book.author" class="book__author">Автор: {{ book.author }}</p>
+                    <p v-if="book.year" class="book__year">Год выпуска: {{ book.year }}</p>
                     <p class="book__read-year deep-purple-text">Прочитано в {{ book.readYear }}</p>
                 </div>
-                <span class="btn-floating halfway-fab btn white">
+                <span class="btn-floating btn white">
                     <router-link :to="{ name: 'EditBook', params: {id: book.id} }"><i class="material-icons deep-purple-text">edit</i></router-link>
-                </span>            
+                </span>
             </div>
         </article>
     </transition>
 </template>
 
 <script>
-import db from '@/firebase/init'
-
 export default {
     name: 'Book',
     props: ['book'],
-    data() {
-        return {
-
-        }
-    },
     methods: {
         deleteBook(id) {
             this.$emit('delete', {
@@ -57,7 +50,7 @@ export default {
         transition: all 0.7s ease;
     }
     .book {
-        margin-bottom: 10px;
+        margin-bottom: 25px;
     }
     .book.col.xl4 {
         margin-left: 0;
@@ -84,6 +77,8 @@ export default {
         border: none;
         padding: 10px;
         transition: all 0.2s ease-in-out;
+        position: absolute;
+        right: 0;
     }
     .book__delete:hover,
     .book__delete:focus {
@@ -93,5 +88,21 @@ export default {
     .book__read-year {
         margin: 5px 0 0;
         font-size: 13px;
+    }
+
+    .btn-floating {
+      position: absolute;
+      right: 10px;
+      bottom: 10px;
+    }
+
+    .card {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .card .card-content {
+      flex-grow: 1;
     }
 </style>
