@@ -24,7 +24,8 @@
           <!-- // TODO: on click:
           // remember current author and title (store or just sessionStorage?)
           // remove book from this list
-          // go to the form of adding new book and paste author and title of the book -->
+          // go to the form of adding new book and paste author and title of the book
+          // clear sessionStorage -->
           <button class="done deep-purple lighten-1 btn-small">Прочитано</button>
         </li>
       </ul>
