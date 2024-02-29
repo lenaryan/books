@@ -16,8 +16,10 @@
     >
       <ul class="collection">
         <li v-for="book in list" :key="book.id" class="collection-item">
-          <span class="material-icons deep-purple-text">book</span>
-          <span>{{ book.author }}{{'&nbsp;–&nbsp;'}}{{ book.title }}</span>
+          <div class="collection-item__title">
+            <span class="material-icons deep-purple-text">book</span>
+            <span>{{ book.author }}{{'&nbsp;–&nbsp;'}}{{ book.title }}</span>
+          </div>
 
           <!-- // TODO: on click:
           // remember current author and title (store or just sessionStorage?)
@@ -60,14 +62,32 @@
   }
   .collection {
     margin-top: 40px;
+    container-type: inline-size;
   }
   .collection-item {
     display: flex;
     align-items: center;
-    gap: 15px;
     font-size: 17px;
+  }
+  .collection-item__title {
+    display: flex;
+    align-items: center;
+    gap: 15px;
   }
   .done {
     margin-left: auto;
+  }
+
+  @container (max-width: 480px) {
+    .collection .collection-item {
+      flex-direction: column;
+      gap: 10px;
+      align-items: flex-start;
+      padding: 15px;
+    }
+
+    .collection-item__title {
+      gap: 10px;
+    }
   }
 </style>

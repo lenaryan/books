@@ -1,6 +1,7 @@
 <template>
   <nav class="deep-purple darken-3">
     <div class="nav-wrapper container">
+      <!-- // TODO: adaptive -->
       <ul>
         <li><router-link :to="{ name: 'Books' }">Прочитано</router-link></li>
         <li><router-link :to="{ name: 'Wishlist' }">Хочу прочитать</router-link></li>
