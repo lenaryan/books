@@ -6,7 +6,7 @@
       appear-to-class="title-shown"
       appear-active-class="title-shown-active"
     >
-      <h1 class="center">Хочу прочитать</h1>
+      <h1 class="center-align">Хочу прочитать</h1>
     </transition>
     <transition
       appear
