@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import Books from '@/components/Books'
 import AddBook from '@/components/AddBook'
 import EditBook from '@/components/EditBook'
+import Wishlist from '@/components/Wishlist'
 import Login from '@/components/Login'
 import firebase from 'firebase'
 
@@ -15,6 +16,11 @@ const router = new Router({
       path: '/',
       name: 'Books',
       component: Books
+    },
+    {
+      path: '/wishlist',
+      name: 'Wishlist',
+      component: Wishlist
     },
     {
       path: '/add',

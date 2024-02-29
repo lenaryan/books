@@ -24,7 +24,7 @@
                     <input id="login__pass" type="password" v-model="password">
                 </div>
                 <p v-if="feedback" class="feedback center">Заполни форму нормально</p>
-                <button class="btn-large deep-purple darken-3 login__btn">Войти</button>
+                <button type="submit" class="btn-large deep-purple darken-3 login__btn">Войти</button>
             </form>
         </transition>
     </section>

@@ -36,7 +36,7 @@
                     <input id="add__year" type="text" v-model="readYear">
                 </div>
                 <p v-if="feedback" class="feedback center">Заполни хотя бы название, камон</p>
-                <button class="btn-large deep-purple darken-3 add__btn">Добавить</button>
+                <button type="submit" class="btn-large deep-purple darken-3 add__btn">Добавить</button>
             </form>
         </transition>
     </section>
