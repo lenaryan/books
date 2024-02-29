@@ -10,9 +10,7 @@
         <li v-if="user"><router-link :to="{ name: 'AddBook' }">Добавить прочитанную</router-link></li>
         <li v-else class="right"><router-link :to="{ name: 'Login' }">Войти</router-link></li>
       </ul>
-      <transition
-        name="fade"
-      >
+      <transition name="fade">
         <ul v-if="menuOpened" class="nav-menu deep-purple darken-3 z-depth-3">
           <li><router-link :to="{ name: 'Books' }">Прочитано</router-link></li>
           <li><router-link :to="{ name: 'Wishlist' }">Хочу прочитать</router-link></li>
@@ -59,6 +57,13 @@ export default {
     border: none;
     background-color: transparent;
     font-size: 25px;
+    user-select: none;
+  }
+  .menu-button:focus {
+    background-color: transparent;
+  }
+  .menu-button:focus-visible {
+    border: 1px solid white;
   }
   @media (max-width: 600px) {
     .nav-menu {
