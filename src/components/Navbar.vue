@@ -10,6 +10,8 @@
         <li v-if="user"><router-link :to="{ name: 'AddBook' }">Добавить прочитанную</router-link></li>
         <li v-else class="right"><router-link :to="{ name: 'Login' }">Войти</router-link></li>
       </ul>
+      <!-- // TODO: make it close on click outside
+      // TODO: close it when url changes -->
       <transition name="fade">
         <ul v-if="menuOpened" class="nav-menu deep-purple darken-3 z-depth-3">
           <li><router-link :to="{ name: 'Books' }">Прочитано</router-link></li>

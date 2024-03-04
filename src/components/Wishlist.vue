@@ -29,6 +29,7 @@
           <button class="done deep-purple lighten-1 btn-small">Прочитано</button>
         </li>
       </ul>
+      <!-- // TODO: form "author + title" to add a new wanna-read -->
     </transition>
   </section>
 </template>
